@@ -37,6 +37,14 @@
     "grunt": "~0.4.5"
   },
   "keywords": [
-    "gruntplugin"
-  ]
+    "gruntplugin",
+    "he",
+    "html",
+    "entities",
+    "htmlentities"
+  ],
+  "dependencies": {
+    "grunt-he": "^0.1.0",
+    "he": "^0.5.0"
+  }
 }
