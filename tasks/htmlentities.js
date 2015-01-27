@@ -13,15 +13,6 @@ module.exports = function(grunt) {
   var path = require('path');
   var fs = require('fs');
 
-  // var normalizePath = function (p) {
-  //   if (path.sep !== '/') {
-  //     p = p.replace(/\\/g, '/');
-  //   }
-  //   return p;
-  // };
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
-
   grunt.registerMultiTask('htmlentities', 'Grunt task for the javascript HE html entities handler', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
@@ -45,32 +36,16 @@ module.exports = function(grunt) {
       var dest = a.dest;
       var counter = 0;
 
-      // if (a.dest && detectDestType(a.dest)) {
-      //   var dest = a.dest;
-      // } else {
-      //   var dest;
-      // }
-      // a.dest ? detectDestType(a.dest) ? a.dest : false : 'dest';
-      // console.log('dest', dest);
-
-      // console.log(files);
       files.forEach(function(f) {
-
-        // console.log(f);
 
         // Handle options.
         var src = grunt.file.read(f);
         var encoded = he.encode(src, heOpts);
-        // console.log(encoded);
 
         var fileDir = dest || path.dirname(f);
-        // console.log('fileDir', fileDir);
         var optsFilename = options.rename ? (options.rename + '.' + options.extname + '.html') : false;
         var fileName = optsFilename || path.basename(f);
-        // console.log('path.basename(f)', path.basename(f));
-        // console.log('fileName', fileName);
         var filePath = fileDir + '/' + fileName;
-        // console.log('filePath', filePath);
         // Write the destination file.
         grunt.file.write(filePath, encoded);
 
@@ -78,7 +53,8 @@ module.exports = function(grunt) {
         // grunt.log.writeln('File "' + filePath + '" created.');
         counter++;
       });
-      grunt.log.writeln('Successfully encoded ' + counter.toString().green + ' files.')
+      // Print a success message.
+      grunt.log.writeln('Successfully encoded ' + counter.toString().green + ' files.');
     });
   });
 
